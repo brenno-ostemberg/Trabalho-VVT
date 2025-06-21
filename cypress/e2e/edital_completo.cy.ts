@@ -2,29 +2,39 @@ describe('template spec', () => {
   it('passes', () => {
     //TODO [x]: LOGIN
     cy.fazerlogin()
+
     //TODO [x]: Entrar no modulo de editais
     cy.editalenter('Grupo 9')
+
     //TODO [x]: Informações do Edital
     cy.editalinfos()
+
     //TODO [x]: Cronograma do Edital
     cy.editalcronograma()
-    //TODO []: Orçamento do Edital
+
+    //TODO [x]: Orçamento do Edital
     cy.editalorcamento()
+
+    //TODO [x]: Rubricas do Edital
     cy.editalrubrica()
+
+    //TODO [x]: Faixa Financeira do Edital
     cy.editalfaixafinancia()
+
+    //TODO [x]: Documentos do Edital
     cy.editaldocumentoproposta()
+
+    //TODO [x]: Documentos Pessoais do Edital
     cy.editaldocumentopessoal()
+
+    //TODO [x]: Perguntas do Edital
     cy.editalperguntas()
+
+    //TODO [x]: Bolsa do Edital
     cy.editalbolsa()
-    //TODO []: Documentos edital
-    //TODO []: Perguntas edital
-    //TODO []: Bolsa edital
-    //TODO []: Finalizar edital
+
+
   })
-  // it('should visit the page', () => {
-  //   cy.visit('https://novo-sig.ledes.net/edital')
-  //   cy.get('[data-cy="nome"]').click() //Clica no botão "Home" para retornar à página anterior
-  // })
 })
 
 

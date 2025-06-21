@@ -57,9 +57,6 @@ Cypress.Commands.add('typeCKEditor', (selector, text) => {
 //INFORMAÇÕES DO EDITAL**************************************************************
 
 Cypress.Commands.add('editalinfos', () => {
-    
-    
-
     //Em Restrições
     cy.get('[data-cy="definirDuracaoProjetoEmMeses"]').click()
     cy.get('[data-cy="duracaoProjetoEmMeses"]').type('12')    
@@ -71,21 +68,18 @@ Cypress.Commands.add('editalinfos', () => {
     cy.get('[data-cy="next-button"]').click()
     cy.get('[data-cy="texto"]').click().realType('Texto', { delay: 10 })
     cy.get('[data-cy="next-button"]').click()
-
     cy.get('[data-cy="estado-todos"]').click()
     cy.get('[data-cy="next-button"]').click()
     let x = 0;
     while (x<=4) {
-        cy.get('[data-cy="perguntaInfoId"]').click().get('[role="option"]').eq(x).click()
-      
-        cy.wait(30) // Aguarda 1 segundo para garantir que o menu foi fechado
+        cy.wait(300)
+        cy.get('[data-cy="perguntaInfoId"]').click().get('[role="option"]').eq(x).click().wait(300)
         cy.get('[data-cy="informacaoComplementarPergunta-adicionar"]').click()
         x++;
-    }
+      }
     cy.get('[data-cy="next-button"]').click()
     cy.wait(1000)
-    //cy.get('[data-cy="editalAnexo-procure"]').click()
-    //cy.document().selectFile('file.json', { action: 'drag-drop' })
+
     cy.get('[data-cy="editalAnexo-procure"]').selectFile('cypress/arc/Fitness.pdf', {
       action: 'drag-drop'
     })
@@ -106,19 +100,19 @@ Cypress.Commands.add('editalcronograma', () => {
   cy.get('[data-cy="next-button"]').click()
 //Cronograma DO EDITAL**************************************************************
 });
+
+
+//ORÇAMENTO DO EDITAL**************************************************************
 Cypress.Commands.add('editalorcamento', () => {
   cy.wait(1000)
   cy.get('[data-cy="orcamento"]').click()
-  //cy.get('[data-cy="cronograma"] > [data-testid="ExpandMoreIcon"]').click()
   cy.get('[data-cy="programa"]').click()
-
   cy.get('[data-cy="programaId"]',{timeout:1000}).click().get('[role="option"]').contains('Kihn').click()
   cy.get('[data-cy="add-natureza-da-despesa"]').click()
   cy.get('[data-cy="naturezaDespesaEditalUnsaved.naturezaDespesaId"]').click().get('[role="option"]').contains('Custeio').click()
   cy.get('[data-cy="naturezaDespesaEditalUnsaved.valor"]').click().type('10000')
   cy.get('[data-cy="naturezaDespesaEdital-confirmar"]').click()
   cy.get('[data-cy="next-button"]').click()
-//Cronograma DO EDITAL**************************************************************
 });
 
 Cypress.Commands.add('editalrubrica', () => {
@@ -259,3 +253,17 @@ Cypress.Commands.add('editalsalvafinaliza', () => {
   cy.get('[data-cy="menu-finalizar"]').click()
   cy.wait(500)
 })
+
+//   cy.get('[data-cy="perguntaDescId"]').click()
+//   cy.wait(1000)
+//   let x = 1;
+//   while (x<=5) {
+//     cy.get('[data-cy="documentoPessoalEdital-adicionar"]').click()
+//     cy.contains('1').should('be.visible').click() // Seleciona o primeiro item da lista
+//     cy.get('[data-cy="documentoPessoalEdital.'+(x-1)+'.documentoPessoalId"]').click().get('[role="option"]').first().click()
+//     x++;
+//   }
+//   cy.get('[data-cy="next-button"]').click()
+
+//   //Cronograma DO EDITAL**************************************************************
+// });
