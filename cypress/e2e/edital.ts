@@ -1,3 +1,5 @@
+import 'cypress';
+
 describe('template spec', () => {
   it('passes', () => {
     //TODO [x]: LOGIN
@@ -15,6 +17,6 @@ describe('template spec', () => {
     //TODO [x]: Orçamento do Edital
     cy.editalorcamento()
 
-    cy.editalsalvafinaliza()
+
   })
 })

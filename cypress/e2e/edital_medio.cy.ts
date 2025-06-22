@@ -6,10 +6,10 @@ describe('template spec', () => {
     cy.fazerlogin()
 
     //TODO [x]: Entrar no modulo de editais
-    cy.editalenter('Grupo-9 E.C. 003/2025 Victor e Brenno')
+    cy.editalenter('Grupo-9 E.M. 002/2025 Victor e Brenno')
 
     //TODO [x]: Informações do Edital
-    cy.editalinfos()
+    cy.editalinfosmedio()
 
     //TODO [x]: Cronograma do Edital
     cy.editalcronograma()
@@ -17,27 +17,10 @@ describe('template spec', () => {
     //TODO [x]: Orçamento do Edital
     cy.editalorcamento()
 
-    //TODO [x]: Rubricas do Edital
-    cy.editalrubrica()
-
-    //TODO [x]: Faixa Financeira do Edital
-    cy.editalfaixafinancia()
-
-    //TODO [x]: Documentos do Edital
-    cy.editaldocumentoproposta()
-
-    //TODO [x]: Documentos Pessoais do Edital
-    cy.editaldocumentopessoal()
-
     //TODO [x]: Perguntas do Edital
-    cy.editalperguntas()
+    cy.editalperguntasmedio()
 
-    //TODO [x]: Bolsa do Edital
-    cy.editalbolsa()
-    
     cy.editalsalvafinaliza()
- 
-
 
   })
 })

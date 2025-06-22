@@ -9,9 +9,12 @@ declare global {
       editalorcamento(): Chainable<void>
       editalrubrica(): Chainable<void>
       editalbolsa(): Chainable<void>
+      editalinfossimples(): Chainable<void>
       editalsalvafinaliza(): Chainable<void>
       editaldocumentoproposta(): Chainable<void>
+      editalperguntasmedio(): Chainable<void>
       editaldocumentopessoal(): Chainable<void>
+      editalinfosmedio(): Chainable<void>
       editalfaixafinancia(): Chainable<void>
       editalperguntas(): Chainable<void>
       editalenter(nome: string): Chainable<void>
@@ -56,6 +59,35 @@ Cypress.Commands.add('typeCKEditor', (selector, text) => {
 
 //INFORMAÇÕES DO EDITAL**************************************************************
 
+
+Cypress.Commands.add('editalinfossimples', () => {
+    //Em Restrições
+    cy.get('[data-cy="definirDuracaoProjetoEmMeses"]').click()
+    cy.get('[data-cy="duracaoProjetoEmMeses"]').type('12')    
+    cy.get('[data-cy="next-button"]').click()
+    //Em Restrições
+});
+
+Cypress.Commands.add('editalinfosmedio', () => {
+    //Em Restrições
+    cy.get('[data-cy="definirDuracaoProjetoEmMeses"]').click()
+    cy.get('[data-cy="duracaoProjetoEmMeses"]').type('12')    
+    cy.get('[data-cy="pesquisadorSubmeterVariasPropostas"]').click()
+    cy.get('[data-cy="next-button"]').click()
+    //Em Restrições
+
+    cy.get('[data-cy="termoDeAceite"]').click().realType('Aceito', { delay: 10 })
+    cy.get('[data-cy="next-button"]').click()
+    cy.get('[data-cy="texto"]').click().realType('Texto', { delay: 10 })
+    cy.get('[data-cy="next-button"]').click()
+    cy.get('[data-cy="estado-acre"]').click()
+    cy.get('[data-cy="estado-sao-paulo"]').click()
+    cy.get('[data-cy="estado-sergipe"]').click()
+
+   
+    cy.get('[data-cy="next-button"]').click()
+});
+
 Cypress.Commands.add('editalinfos', () => {
     //Em Restrições
     cy.get('[data-cy="definirDuracaoProjetoEmMeses"]').click()
@@ -90,7 +122,7 @@ Cypress.Commands.add('editalinfos', () => {
 //INFORMAÇÕES DO EDITAL**************************************************************
 Cypress.Commands.add('editalcronograma', () => {
   //cy.get('[data-cy="cronograma"] > [data-testid="ExpandMoreIcon"]').click()
-  cy.get('[data-cy="periodo-de-submissao"]').click()
+  cy.get('[data-cy="cronograma"]').click()
   cy.get('[data-cy="periodo-de-submissao"]').click()
   cy.get('[data-cy="add-button"]').click()
   cy.get('[data-cy="chamadaUnsaved.inicio"]').type('01/12/202500:00:00')
@@ -198,6 +230,25 @@ Cypress.Commands.add('editaldocumentopessoal', () => {
 
   //Cronograma DO EDITAL**************************************************************
 });
+ 
+
+Cypress.Commands.add('editalperguntasmedio', () => {
+  cy.get('[data-cy="perguntas"]').click()
+  cy.get('[data-cy="indicadores-de-producao"]').click()
+  let i = 1;
+  while (i<=3) {
+    cy.wait(1000)
+    cy.get('[data-cy="add-button"]').click()
+    cy.get('[data-cy="indicadorProducaoUnsaved.id"]').click()
+    cy.get('[role="option"]').eq(0).click()
+    cy.get('[data-cy="indicadorProducao-confirmar"]').click()
+    cy.wait(500)
+
+    i++;
+  }
+    cy.get('[data-cy="next-button"]').click()
+  //Cronograma DO EDITAL**************************************************************
+});
 
 
 Cypress.Commands.add('editalperguntas', () => {
@@ -247,6 +298,7 @@ Cypress.Commands.add('editalbolsa', () => {
   }
   //Cronograma DO EDITAL**************************************************************
 });
+
 Cypress.Commands.add('editalsalvafinaliza', () => {
   cy.wait(500)
   cy.get('[data-cy="menu-salvar"]').click()
