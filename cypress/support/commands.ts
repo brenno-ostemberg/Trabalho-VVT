@@ -125,7 +125,7 @@ Cypress.Commands.add('editalcronograma', () => {
   cy.get('[data-cy="cronograma"]').click()
   cy.get('[data-cy="periodo-de-submissao"]').click()
   cy.get('[data-cy="add-button"]').click()
-  cy.get('[data-cy="chamadaUnsaved.inicio"]').type('01/12/202500:00:00')
+  cy.get('[data-cy="chamadaUnsaved.inicio"]').type('01/01/202500:00:00')
   cy.get('[data-cy="chamadaUnsaved.termino"]').type('05/05/202600:00:00')
   cy.get('[data-cy="chamada-confirmar"]').click()
   cy.get('[data-cy="next-button"]').click()
@@ -179,8 +179,8 @@ Cypress.Commands.add('editalfaixafinancia', () => {
   while (x<=5) {
     cy.get('[data-cy="add-button"]').click()
     cy.get('[data-cy="faixaFinanciamentoUnsaved.nome"]', {timeout: 1000}).click().type('Faixa '+x);
-    cy.get('[data-cy="faixaFinanciamentoUnsaved.valorMinimo"]', {timeout: 1000}).click().clear().type('10000')
-    cy.get('[data-cy="faixaFinanciamentoUnsaved.valorMaximo"]', {timeout: 1000}).click().clear().type('50000');
+    cy.get('[data-cy="faixaFinanciamentoUnsaved.valorMinimo"]', {timeout: 1000}).click().clear().type(x+'000'+x)
+    cy.get('[data-cy="faixaFinanciamentoUnsaved.valorMaximo"]', {timeout: 1000}).click().clear().type((x+1)+'000'+x);
     cy.get('[data-cy="faixaFinanciamentoUnsaved.observacao"]', {timeout: 1000}).click().type('Observação '+x);
     cy.get('[data-cy="faixaFinanciamento-confirmar"]').click()
     x++;
@@ -200,14 +200,14 @@ Cypress.Commands.add('editaldocumentoproposta', () => {
   cy.get('[data-cy="documentoPropostaEdital.0.nome"]').click().type('Documento 0')
   cy.get('[data-cy="documentoPropostaEdital.0.descricao"]').click().type('Descricao 0')
   cy.get('[data-cy="documentoPropostaEdital.0.formatoArquivo"]').click().first().type('PDF').type('{downarrow}').type('{enter}')
-  cy.get('[data-cy="documentoPropostaEdital.0.tamanhoArquivo"]').click().type('1000')
+  cy.get('[data-cy="documentoPropostaEdital.0.tamanhoArquivo"]').click().type('9')
   cy.get('[data-cy="documentoPropostaEdital-adicionar"]').click()
   
   cy.contains('2').should('be.visible').click() // Seleciona o primeiro item da lista
   cy.get('[data-cy="documentoPropostaEdital.1.nome"]').click().type('Documento 1')
   cy.get('[data-cy="documentoPropostaEdital.1.descricao"]').click().type('Descricao 1')
   cy.get('[data-cy="documentoPropostaEdital.1.formatoArquivo"]').click().first().type('PDF').type('{downarrow}').type('{enter}')
-  cy.get('[data-cy="documentoPropostaEdital.1.tamanhoArquivo"]').click().type('1000')
+  cy.get('[data-cy="documentoPropostaEdital.1.tamanhoArquivo"]').click().type('9')
 
   cy.get('[data-cy="next-button"]').click()
 
@@ -239,9 +239,9 @@ Cypress.Commands.add('editalperguntasmedio', () => {
   while (i<=3) {
     cy.wait(1000)
     cy.get('[data-cy="add-button"]').click()
-    cy.get('[data-cy="indicadorProducaoUnsaved.id"]').click()
-    cy.get('[role="option"]').eq(0).click()
-    cy.get('[data-cy="indicadorProducao-confirmar"]').click()
+    cy.get('[data-cy="indicadorProducaoUnsaved.id"]').click().wait(500)
+    cy.get('[role="option"]').eq(0).click().wait(500)
+    cy.get('[data-cy="indicadorProducao-confirmar"]').click().wait(500)
     cy.wait(500)
 
     i++;
@@ -269,10 +269,10 @@ Cypress.Commands.add('editalperguntas', () => {
   let i = 1;
   while (i<=3) {
     cy.wait(1000)
-    cy.get('[data-cy="add-button"]').click()
-    cy.get('[data-cy="indicadorProducaoUnsaved.id"]').click()
-    cy.get('[role="option"]').eq(0).click()
-    cy.get('[data-cy="indicadorProducao-confirmar"]').click()
+    cy.get('[data-cy="add-button"]').click().wait(250)
+    cy.get('[data-cy="indicadorProducaoUnsaved.id"]').click().wait(250)
+    cy.get('[role="option"]').eq(0).click().wait(250)
+    cy.get('[data-cy="indicadorProducao-confirmar"]').click().wait(250)
     cy.wait(500)
 
     i++;
