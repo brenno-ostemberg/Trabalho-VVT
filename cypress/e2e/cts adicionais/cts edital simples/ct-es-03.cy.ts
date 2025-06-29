@@ -24,6 +24,4 @@ describe('Sistema Integrado de Gestão - Validação Título do Edital', () => {
   })
 })
 
-
-
 // Relatorio de Erros:
