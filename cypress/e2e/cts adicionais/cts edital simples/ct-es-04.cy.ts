@@ -32,4 +32,4 @@ describe('Sistema Integrado de Gestão - Validação Título do Edital', () => {
 
 // Criticidade: alta, é um fluxo que está relacinado a identifição do edital
 // Frequência: alta, é um fluxo normal e sempre utilizado ao adicionar um novo edital no sistema
-// Cobertura: é um cenário que utiliza um valor limiar nulo
+// Cobertura: é um cenário que utiliza um valor nulo
