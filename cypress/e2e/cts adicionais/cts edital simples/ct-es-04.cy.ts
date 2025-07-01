@@ -17,7 +17,8 @@ describe('Sistema Integrado de Gestão - Validação Título do Edital', () => {
     // Passo 4: Clica no botão 'Próximo'
     cy.get('[data-cy="next-button"').click();
 
-    // Resultado esperado: NÃO vai para o substep 'Restrições' e apresenta uma mensagem de erro informando que o título não pode ser vazio
+    // Resultado esperado: NÃO vai para o substep 'Restrições' e apresenta uma mensagem de erro 
+    // informando que o título não pode ser vazio
     cy.get('.error-message').should('be.visible');
 
 

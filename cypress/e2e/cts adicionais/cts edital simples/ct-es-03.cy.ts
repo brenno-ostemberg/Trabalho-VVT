@@ -18,7 +18,6 @@ describe('Sistema Integrado de Gestão - Validação Título do Edital', () => {
     cy.get('[data-cy="next-button"').click();
 
     // Resultado esperado: NÃO deveria ir para o substep 'Restrições'
-    //cy.contains('p', 'Restrição').should('be.visible')
     cy.contains('Restrições');
   })
 })
